@@ -13,6 +13,9 @@ input.addEventListener('input', debounce(handleInputSearch, DEBOUNCE_DELAY));
 
 function handleInputSearch(event) {
   event.preventDefault();
+  if (event.target.value === '') {
+    return;
+  }
   const seekedCountry = event.target.value.trim();
   fetchCountries(seekedCountry)
     .then(countries => {
